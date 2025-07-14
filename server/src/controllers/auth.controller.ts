@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { authService } from '@/services/auth.service';
 import { signupSchema, loginSchema } from '@/utils/validation';
 import { asyncHandler } from '@/middleware/errorHandler';
+import { TokenPayload } from '@/utils/jwt';
 
 export const signup = asyncHandler(async (req: Request, res: Response) => {
   const validatedData = signupSchema.parse(req.body);
@@ -42,11 +43,12 @@ export const refreshToken = asyncHandler(async (req: Request, res: Response) => 
   });
 });
 
-export const getProfile = asyncHandler(async (_req: Request, res: Response) => {
-//   const user = await authService.getProfile(req.user!.id);
+export const getProfile = asyncHandler(async (req: Request, res: Response) => {
+    console.log(req.user);
+const user = await authService.getProfile((req.user as TokenPayload).userId);
 
   res.status(200).json({
     success: true,
-    // data: user,
+    data: user,
   });
 });
