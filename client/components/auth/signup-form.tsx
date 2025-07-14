@@ -41,11 +41,11 @@ export function SignupForm() {
     onSuccess: (data) => {
       localStorage.setItem('accessToken', data.accessToken)
       localStorage.setItem('refreshToken', data.refreshToken)
-      toast.success('Account created successfully!')
+      toast.success('Account created successfully! Welcome!')
       router.push('/profile')
     },
     onError: (error: any) => {
-      const message = error.response?.data?.error?.message || 'Signup failed'
+      const message = error.response?.data?.error?.message || 'Signup failed. Please try again.'
       toast.error(message)
     },
   })
@@ -121,6 +121,7 @@ export function SignupForm() {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-3 text-sm text-muted-foreground hover:text-foreground"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? 'Hide' : 'Show'}
                 </button>
@@ -159,7 +160,7 @@ export function SignupForm() {
                 href="/login"
                 className="font-medium text-primary hover:underline"
               >
-                Sign in
+                Log in
               </Link>
             </p>
           </CardFooter>

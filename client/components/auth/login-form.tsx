@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
-import { Loader2, Mail, Lock, Sparkles } from 'lucide-react'
+import { Loader2, Mail, Lock, LogIn } from 'lucide-react'
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
@@ -117,23 +117,23 @@ export function LoginForm() {
               {loginMutation.isPending ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Creating account...
+                  Logging in...
                 </>
               ) : (
                 <>
-                  <Sparkles className="mr-2 h-4 w-4" />
-                  Create Account
+                  <LogIn className="mr-2 h-4 w-4" />
+                  Login
                 </>
               )}
             </Button>
 
             <p className="text-sm text-center text-muted-foreground">
-              Already have an account?{' '}
+              Don't have an account?{' '}
               <Link
-                href="/login"
+                href="/register"
                 className="font-medium text-primary hover:underline"
               >
-                Sign in
+                Sign up
               </Link>
             </p>
           </CardFooter>

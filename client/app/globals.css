@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -91,6 +92,37 @@
   animation: float 6s ease-in-out infinite;
 }
 
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animate-blob-delay-2 {
+  animation-delay: 2s;
+}
+
+.animate-blob-delay-4 {
+  animation-delay: 4s;
+}
+
+.animate-blob-delay-6 {
+  animation-delay: 6s;
+}
+
 /* Glass morphism */
 .glass {
   @apply backdrop-blur-md bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10;
@@ -99,4 +131,8 @@
 /* Gradient text */
 .gradient-text {
   @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
