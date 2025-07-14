@@ -1,8 +1,14 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Document, Schema, Types } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { config } from '@/config/environment';
 
+interface IUserMethods {
+  comparePassword(candidatePassword: string): Promise<boolean>;
+}
+
+
 export interface IUser extends Document {
+  _id: Types.ObjectId;
   email: string;
   password: string;
   name: string;
@@ -17,7 +23,7 @@ export interface IUser extends Document {
 
 
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema<IUser, mongoose.Model<IUser>, IUserMethods>(
   {
     email: {
       type: String,
