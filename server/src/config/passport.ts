@@ -1,4 +1,3 @@
-// codementor/server/src/config/passport.ts
 import passport from 'passport';
 import { Strategy as JwtStrategy, ExtractJwt, StrategyOptions } from 'passport-jwt';
 import { config } from './environment';
