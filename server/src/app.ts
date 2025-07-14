@@ -7,7 +7,7 @@ import rateLimit from 'express-rate-limit';
 import { config } from './config/environment'
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 import { requestLogger } from './middleware/requestLogger';
-// import apiRoutes from './routes/api';
+import apiRoutes from './routes/index'
 
 class App {
   public app: Application;
@@ -90,7 +90,7 @@ class App {
     // this.app.use(passport.initialize());
 
     // API routes
-    // this.app.use('/api', apiRoutes);
+    this.app.use('/api', apiRoutes);
   }
 
   private initializeErrorHandling(): void {
@@ -105,7 +105,7 @@ class App {
     const port = config.PORT;
     if (config.NODE_ENV !== 'test') {
     this.app.listen(port, () => {
-      console.log(`🚀 Server running on port ${port}`);
+      console.log(`🚀 Server running on port localhost:${port}`);
     });
   }
   }
