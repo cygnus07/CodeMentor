@@ -1,4 +1,3 @@
-// codementor/client/lib/validations.ts
 import { z } from 'zod';
 
 export const signupSchema = z.object({
