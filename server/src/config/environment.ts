@@ -28,12 +28,12 @@ const envSchema = z.object({
   LOG_LEVEL: z.enum(['error', 'warn', 'info', 'debug']).default('info'),
   
   // Email configuration
-  EMAIL_HOST: z.string().default('smtp.gmail.com'),
-  EMAIL_PORT: z.string().transform(Number).default('587'),
-  EMAIL_USER: z.string().email(),
-  EMAIL_PASS: z.string(),
-  EMAIL_FROM: z.string().email(),
-  EMAIL_SECURE: z.string().transform(val => val === 'true').default('false'),
+//   EMAIL_HOST: z.string().default('smtp.gmail.com'),
+//   EMAIL_PORT: z.string().transform(Number).default('587'),
+//   EMAIL_USER: z.string().email(),
+//   EMAIL_PASS: z.string(),
+//   EMAIL_FROM: z.string().email(),
+//   EMAIL_SECURE: z.string().transform(val => val === 'true').default('false'),
   
   // Application
   APP_NAME: z.string().default('CodeMentor'),
