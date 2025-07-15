@@ -1,4 +1,3 @@
-// codementor/client/lib/api/auth.ts
 import apiClient from './client';
 import { AuthResponse, User, ApiResponse } from '@/types';
 import { SignupInput, LoginInput } from '@/lib/validations';

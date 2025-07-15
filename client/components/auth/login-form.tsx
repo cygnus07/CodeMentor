@@ -130,7 +130,7 @@ export function LoginForm() {
             <p className="text-sm text-center text-muted-foreground">
               Don't have an account?{' '}
               <Link
-                href="/register"
+                href="/signup"
                 className="font-medium text-primary hover:underline"
               >
                 Sign up
