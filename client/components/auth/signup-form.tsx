@@ -39,18 +39,21 @@ export function SignupForm() {
   const signupMutation = useMutation({
     mutationFn: authApi.signup,
     onSuccess: (data) => {
+      console.log("Signup successful:", data)
       localStorage.setItem('accessToken', data.accessToken)
       localStorage.setItem('refreshToken', data.refreshToken)
       toast.success('Account created successfully! Welcome!')
       router.push('/profile')
     },
     onError: (error: any) => {
+      console.error("Signup error:", error)
       const message = error.response?.data?.error?.message || 'Signup failed. Please try again.'
       toast.error(message)
     },
   })
 
   const onSubmit = (data: SignupInput) => {
+    console.log("submitting data:", data)
     signupMutation.mutate(data)
   }
 
