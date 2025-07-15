@@ -1,4 +1,3 @@
-// codementor/client/components/chat/empty-chat.tsx
 "use client"
 
 import { motion } from 'framer-motion';

@@ -1,4 +1,3 @@
-// codementor/client/components/chat/chat-sidebar.tsx
 "use client"
 
 import { useState } from 'react';
