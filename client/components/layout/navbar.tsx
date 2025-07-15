@@ -37,13 +37,13 @@ export function Navbar({ user }: NavbarProps) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <Link href="/chat">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" className='cursor-pointer'>
                 <MessageSquare className="h-4 w-4 mr-2" />
                 Chat
               </Button>
             </Link>
             <Link href="/profile">
-              <Button variant="ghost" size="sm">
+              <Button className='cursor-pointer' variant="ghost" size="sm">
                 <User className="h-4 w-4 mr-2" />
                 Profile
               </Button>
@@ -52,7 +52,7 @@ export function Navbar({ user }: NavbarProps) {
               variant="ghost"
               size="sm"
               onClick={handleLogout}
-              className="text-destructive hover:text-destructive"
+              className="text-destructive hover:text-destructive cursor-pointer"
             >
               <LogOut className="h-4 w-4 mr-2" />
               Logout

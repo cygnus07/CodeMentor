@@ -61,7 +61,7 @@ export function ChatInput({ onSendMessage, isLoading, placeholder }: ChatInputPr
           size="icon"
           variant="gradient"
           disabled={!message.trim() || isLoading}
-          className="flex-shrink-0"
+          className="flex-shrink-0 cursor-pointer"
         >
           {isLoading ? (
             <Loader2 className="h-4 w-4 animate-spin" />

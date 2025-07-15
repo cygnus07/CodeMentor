@@ -9,7 +9,7 @@ const router = Router();
 
 router.use('/health', healthRoutes);
 router.use('/auth', authRoutes);
-router.use('/chat', chatRoutes);
+router.use('/chats', chatRoutes);
 
 
 export default router;
