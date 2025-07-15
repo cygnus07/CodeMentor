@@ -3,20 +3,20 @@ import { ApiResponse } from '@/types';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
 
-console.log('🔧 API Client initialized with URL:', API_URL);
+console.log('API Client initialized with URL:', API_URL);
 
 export const apiClient = axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 10000, // 10 second timeout
+  timeout: 10000, 
 });
 
 // Request interceptor to add auth token and log requests
 apiClient.interceptors.request.use(
   (config) => {
-    console.log('📤 API Request:', {
+    console.log('API Request:', {
       url: config.url,
       method: config.method,
       baseURL: config.baseURL,

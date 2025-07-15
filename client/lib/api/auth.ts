@@ -57,11 +57,11 @@ export const authApi = {
 
   login: async (data: LoginInput): Promise<AuthResponse> => {
     try {
-      console.log('🚀 Making login request to:', `${process.env.NEXT_PUBLIC_API_URL}/auth/login`);
+      console.log('Making login request to:', `${process.env.NEXT_PUBLIC_API_URL}/auth/login`);
       
       const response = await apiClient.post<ApiResponse<AuthResponse>>('/auth/login', data);
       
-      console.log('✅ Login response:', response.data);
+      // console.log('Login response:', response.data);
       
       if (!response.data.success) {
         throw new Error(response.data.error?.message || 'Login failed');
@@ -73,7 +73,7 @@ export const authApi = {
       
       return response.data.data;
     } catch (error) {
-      console.error('❌ Login error:', error);
+      console.error('Login error:', error);
       
       if (error instanceof AxiosError) {
         if (error.response) {
