@@ -10,7 +10,7 @@ import { ChatInput } from '@/components/chat/chat-input';
 import { MessageComponent } from '@/components/chat/message';
 import { EmptyChat } from '@/components/chat/empty-chat';
 import { useChats, useChatMessages } from '@/lib/hooks/use-chat';
-import { toast } from 'sonner';
+// import { toast } from 'sonner';
 
 export default function ChatPage() {
   const router = useRouter();

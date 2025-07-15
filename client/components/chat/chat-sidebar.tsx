@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, Plus, Trash2, Menu, X, Edit2, Check } from 'lucide-react';
+import { MessageSquare, Plus, Trash2, Menu, X, Edit2, Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Chat } from '@/types';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -28,10 +28,17 @@ export function ChatSidebar({
   onDeleteChat,
   isCreating,
 }: ChatSidebarProps) {
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [editingChatId, setEditingChatId] = useState<string | null>(null);
   const [editTitle, setEditTitle] = useState('');
   const queryClient = useQueryClient();
+
+  // Persist collapsed state
+  useEffect(() => {
+    const savedState = localStorage.getItem('sidebarCollapsed');
+    if (savedState) setIsCollapsed(JSON.parse(savedState));
+  }, []);
 
   const updateTitleMutation = useMutation({
     mutationFn: ({ chatId, title }: { chatId: string; title: string }) =>
@@ -55,6 +62,12 @@ export function ChatSidebar({
     if (editTitle.trim()) {
       updateTitleMutation.mutate({ chatId, title: editTitle.trim() });
     }
+  };
+
+  const toggleCollapse = () => {
+    const newState = !isCollapsed;
+    setIsCollapsed(newState);
+    localStorage.setItem('sidebarCollapsed', JSON.stringify(newState));
   };
 
   const formatDate = (date: string) => {
@@ -81,18 +94,42 @@ export function ChatSidebar({
         {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </Button>
 
+      {/* Desktop Toggle Button - Now positioned independently */}
+      <Button
+        variant="outline"
+        size="icon"
+        className={cn(
+          "hidden md:flex fixed top-1/2 -translate-y-1/2 z-40",
+          "h-8 w-8 rounded-l-none border-l-0 transition-all duration-200",
+          isCollapsed ? "left-0" : "left-80"
+        )}
+        onClick={toggleCollapse}
+      >
+        {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+      </Button>
+
       {/* Sidebar */}
       <AnimatePresence>
         <motion.aside
-          initial={{ x: -300 }}
-          animate={{ x: isOpen ? 0 : -300 }}
-          transition={{ type: 'spring', damping: 25 }}
+          initial={{ 
+            x: window.innerWidth >= 768 ? 0 : -300,
+            width: window.innerWidth >= 768 ? (isCollapsed ? '0' : '20rem') : '20rem'
+          }}
+          animate={{ 
+            x: isOpen ? 0 : (window.innerWidth >= 768 ? 0 : -300),
+            width: window.innerWidth >= 768 ? (isCollapsed ? '0' : '20rem') : '20rem'
+          }}
+          transition={{ type: 'spring', damping: 25, stiffness: 100 }}
           className={cn(
-            "fixed md:relative md:translate-x-0 top-0 left-0 h-full w-80 bg-background border-r z-30",
-            "md:block"
+            "fixed md:relative top-0 left-0 h-[calc(100vh-5rem)] bg-background border-r z-30",
+            "md:block",
+            isCollapsed ? 'overflow-hidden' : 'overflow-y-auto'
           )}
         >
-          <div className="flex flex-col h-full pt-20 md:pt-0">
+          <div className={cn(
+            "flex flex-col h-full pt-20 md:pt-0 transition-all duration-200",
+            isCollapsed ? 'opacity-0' : 'opacity-100'
+          )}>
             <div className="p-4">
               <Button
                 variant="gradient"
