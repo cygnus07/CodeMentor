@@ -1,5 +1,3 @@
-
-```markdown
 # CodeMentor - AI-Powered Coding Assistant 🚀
 
 <div align="center">
@@ -75,9 +73,8 @@ CodeMentor is a modern, full-stack web application that provides AI-powered codi
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/cygnus07/codementor.git
+   git clone https://github.com/yourusername/codementor.git
    cd codementor
-   ```
 
 2. **Install dependencies**
    ```bash
@@ -492,7 +489,6 @@ NODE_ENV=development
 PORT=5000
 
 # Database
-DATABASE_TYPE=mongodb
 MONGODB_URI=mongodb://localhost:27017/codementor
 
 # Security
@@ -509,12 +505,6 @@ OPENAI_MODEL=gpt-4-turbo-preview
 # CORS
 CORS_ORIGIN=http://localhost:3000
 
-# Email (optional)
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USER=your-email@gmail.com
-EMAIL_PASS=your-app-password
-EMAIL_FROM=noreply@codementor.com
 ```
 
 ## 📚 API Endpoints
@@ -649,73 +639,7 @@ npm run format      # Prettier format
 - Ensure secrets are set
 - Check token expiration
 - Verify refresh flow
-```
 
-# Screenshot Instructions (codementor/screenshots/README.md)
 
-```markdown
-# Screenshot Guide
 
-Please take screenshots of the following pages and save them with these exact names:
-
-## Required Screenshots
-
-1. **login.png**
-   - The login page with email and password fields
-   - Show the glass morphism effect and gradient background
-
-2. **signup.png**
-   - The signup page with all form fields
-   - Capture the animated background
-
-3. **profile.png**
-   - User profile page after login
-   - Show user information and quick actions
-
-4. **chat-empty.png**
-   - Chat page with no messages
-   - Display the suggestion cards
-
-5. **chat-conversation.png**
-   - Active chat with messages
-   - Include examples with code blocks
-   - Show both user and AI messages
-
-6. **chat-mobile.png**
-   - Mobile view of the chat interface
-   - Show the collapsible sidebar
-
-7. **logo.png** (optional)
-   - Your app logo or create a simple one
-   - Recommended size: 512x512px
-
-## How to Take Good Screenshots
-
-1. **Clear your browser cache** first
-2. **Use Chrome DevTools** for consistent screenshots
-3. **Disable browser extensions** that might interfere
-4. **For mobile**: Use device emulation in DevTools
-5. **Resolution**: Aim for 1920x1080 for desktop, 375x812 for mobile
-
-## Example Screenshot Commands (macOS)
-
-```bash
-# Full screen
-Cmd + Shift + 3
-
-# Selected area
-Cmd + Shift + 4
-
-# Window
-Cmd + Shift + 4, then Space
-```
-
-## Tips for Great Screenshots
-
-- ✅ Show real content (not lorem ipsum)
-- ✅ Demonstrate key features
-- ✅ Use good lighting/contrast
-- ✅ Capture hover states where relevant
-- ❌ Don't include personal information
-- ❌ Avoid showing errors or bugs
 ```
